@@ -1,7 +1,5 @@
 import React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { AppProvider } from "./contexts/AppContext";
-import Routes from "./routes";
 
 const theme = createTheme({
   typography: {
@@ -16,9 +14,9 @@ const theme = createTheme({
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <AppProvider>
+      {/* <AppProvider>
         <Routes />
-      </AppProvider>
+      </AppProvider> */}
     </ThemeProvider>
   );
 }
