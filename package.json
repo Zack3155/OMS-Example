@@ -1,0 +1,108 @@
+{
+  "name": "esso-instantpay",
+  "version": "0.1.0",
+  "private": false,
+  "dependencies": {
+    "@babel/preset-typescript": "^7.16.7",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@loadable/component": "^5.15.3",
+    "@mui/base": "^5.0.0-beta.7",
+    "@mui/icons-material": "^5.13.7",
+    "@mui/material": "^5.13.7",
+    "@mui/styled-engine-sc": "^5.12.0",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@svgr/webpack": "^6.2.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/html-webpack-plugin": "^3.2.6",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-i18next": "^8.1.0",
+    "@types/webpack": "^5.28.0",
+    "axios": "^1.4.0",
+    "babel-loader": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-import": "^2.25.4",
+    "file-loader": "^6.2.0",
+    "http-proxy-middleware": "^2.0.4",
+    "query-string": "^8.0.3",
+    "react": "^18.2.0",
+    "react-barcode": "^1.4.6",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.0.1",
+    "react-lottie": "^1.2.3",
+    "react-phone-number-input": "^3.3.2",
+    "react-redux": "^8.1.1",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
+    "styled-components": "^6.0.0-rc.6",
+    "tailwindcss": "^3.3.2",
+    "ts-loader": "^9.2.8",
+    "ts-node": "^10.7.0",
+    "tsconfig-paths": "^4.1.1",
+    "typescript": "^4.4.2",
+    "web-vitals": "^2.1.0",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.13.1"
+  },
+  "scripts": {
+    "start": "set PORT=3100 && react-scripts start",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.ts",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "eslint": "eslint \"**/*.{ts,tsx}\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.22.5",
+    "@babel/plugin-proposal-private-property-in-object": "",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "@types/loadable__component": "^5.13.4",
+    "@types/node": "^18.15.5",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "axios": "^1.2.1",
+    "babel-loader": "^9.1.2",
+    "babel-plugin-import": "^1.13.3",
+    "eslint": "^8.36.0",
+    "eslint-config-prettify-base": "^0.1.8",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.8.6",
+    "react-router-dom": "^6.9.0",
+    "style-loader": "^3.3.3",
+    "tsconfig-paths-webpack-plugin": "^4.0.0"
+  }
+}

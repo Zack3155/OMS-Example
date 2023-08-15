@@ -1,0 +1,6 @@
+{
+  "projectname": "otter-oms",
+  "setting": {
+    "compileHotReLoad": true
+  }
+}
