@@ -1,15 +1,23 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { isAvailable } from "src/common/constants";
+import loadingReducer from "./Loading";
+import langReducer from "./Lang";
+import routeReducer from "./Route";
+// import userReducer from "./User";
+// import editCardReducer from "./EditCard";
+// import membershipReducer from "./Membership";
+// import myStoreReducer from "./MyStore";
+// import tagFilterReducer from "./TagFilter";
 
 const rootReducer = combineReducers({
-	// lang: langReducer,
-	// loading: loadingReducer,
+	lang: langReducer,
+	loading: loadingReducer,
+	route: routeReducer,
 	// user: userReducer,
 	// editCard: editCardReducer,
 	// membership: membershipReducer,
 	// myStore: myStoreReducer,
 	// tagFilter: tagFilterReducer,
-	// route: routeReducer,
 	// unreadNotificationCount: unreadNotificationReducer,
 });
 
