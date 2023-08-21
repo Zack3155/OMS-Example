@@ -7,7 +7,6 @@ import {
 } from "src/services/utils/hooks/useSelector";
 import { IS_LOGIN } from "src/common/constants";
 import { routeActions } from "src/services/store/Route";
-import LoopIcon from "@mui/icons-material/Loop";
 import { Backdrop } from "@mui/material";
 
 export default function Routes() {
