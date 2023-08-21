@@ -8,6 +8,7 @@ import {
 import { IS_LOGIN } from "src/common/constants";
 import { routeActions } from "src/services/store/Route";
 import LoopIcon from "@mui/icons-material/Loop";
+import { Backdrop } from "@mui/material";
 
 export default function Routes() {
 	const navigate = useNavigate();
@@ -34,5 +35,12 @@ export default function Routes() {
 			);
 	}, []);
 
-	return <LoopIcon>{filteredRoutes}</LoopIcon>;
+	return (
+		<Backdrop
+			sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+			open={loading}
+		>
+			{filteredRoutes}
+		</Backdrop>
+	);
 }
