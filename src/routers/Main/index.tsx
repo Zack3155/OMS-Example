@@ -3,6 +3,7 @@ import loadable from "@loadable/component";
 import { RouteProps, RouteTypes } from "src/common/models";
 import { CircularProgress } from "@mui/material";
 import Dashboard from "./Dashboard";
+import Membership from "./Membership";
 
 // 主页面MainLayout
 const MainLayout = loadable(() => import("src/components/core/Layouts"), {
@@ -20,7 +21,7 @@ export const Main: RouteProps = {
 	children: [
 		Dashboard,
 		// eCards,
-		// Membership,
+		Membership,
 		// Store,
 		// CustomerManagement,
 		// Reports,
