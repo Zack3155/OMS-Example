@@ -5,6 +5,7 @@ import { IS_LOGIN } from "src/common/constants";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getKeyName } from "src/services/utils/handlers/routes";
 import Panes from "./Panes";
+import { onClearLoginCache } from "src/services/utils/handlers/logout";
 
 export default function MainContent() {
 	const { setModalVisible, classes } = useContext(MainLayoutContext);
@@ -38,7 +39,7 @@ function useMainContent() {
 	useEffect(() => {
 		// 未登录
 		if (!localStorage.getItem(IS_LOGIN) && !pathname.includes("/auths")) {
-			// onClearLoginCache();
+			onClearLoginCache();
 			// setModalVisible(ModalVisibility.Login);
 		}
 
