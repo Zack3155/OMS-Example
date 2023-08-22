@@ -5,9 +5,9 @@ export const ENVIRONMENT = APIEnvironment.UAT;
 
 export const isAvailable = process.env.NODE_ENV !== "production";
 
-export const ACCESS_TOKEN = "preka_access_token_key";
-
+export const ACCESS_TOKEN = "access_token";
 export const ID_TOKEN = "preka_id_token_key";
+export const REFRESH_TOKEN = "refresh_token";
 
 export const KEEP_LOGIN = "keep_login";
 
