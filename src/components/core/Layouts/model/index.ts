@@ -4,3 +4,11 @@ export enum ModalVisibility {
 	SaveCard,
 	Terms,
 }
+
+export interface PanesItemProps {
+	title: string;
+	content: JSX.Element;
+	key: string;
+	closable: boolean;
+	path: string;
+}

@@ -28,18 +28,19 @@ export default function Routes() {
 		if (localStorage.getItem(IS_LOGIN))
 			dispatch(
 				routeActions.setLoginRoutes({
-					roles: "",
+					roles: "ADMIN",
 					navigate,
 				})
 			);
 	}, []);
 
 	return (
-		<Backdrop
-			sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-			open={loading}
-		>
+		<>
 			{filteredRoutes}
-		</Backdrop>
+			<Backdrop
+				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+				open={loading}
+			/>
+		</>
 	);
 }
