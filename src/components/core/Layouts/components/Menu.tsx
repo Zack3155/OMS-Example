@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { routesToMenu } from "src/services/utils/handlers/menu";
@@ -108,7 +108,7 @@ function useMenu() {
 	// 菜单
 	const menu = routesToMenu(routes, t);
 
-	useEffect(() => {
+	useMemo(() => {
 		const index = subRoutes.findIndex((item) =>
 			!item ? false : pathname.includes(item)
 		);
