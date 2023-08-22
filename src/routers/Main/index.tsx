@@ -2,6 +2,7 @@ import React from "react";
 import loadable from "@loadable/component";
 import { RouteProps, RouteTypes } from "src/common/models";
 import { CircularProgress } from "@mui/material";
+import Dashboard from "./Dashboard";
 
 // 主页面MainLayout
 const MainLayout = loadable(() => import("src/components/core/Layouts"), {
@@ -17,7 +18,7 @@ export const Main: RouteProps = {
 	type: RouteTypes.PUBLIC,
 	clickable: true,
 	children: [
-		// Dashboard,
+		Dashboard,
 		// eCards,
 		// Membership,
 		// Store,

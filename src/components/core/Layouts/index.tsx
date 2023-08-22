@@ -1,28 +1,15 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useAppDispatch } from "src/services/utils/hooks/useSelector";
 import { ModalVisibility } from "./model";
-import MenuIcon from "@material-ui/icons/Menu";
-import {
-	AppBar,
-	CssBaseline,
-	Divider,
-	Drawer,
-	IconButton,
-	Toolbar,
-	Typography,
-} from "@mui/material";
-import { Badge } from "@mui/base";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import { CssBaseline } from "@mui/material";
 import MainContent from "./components/MainContent";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core";
-import classNames from "classnames";
+import Menu from "./components/Menu";
+import NavBar from "./components/NavBar";
 
-function MainLayout(props) {
+function MainLayout({ classes }) {
 	const dispatch = useAppDispatch();
-
-	const { classes } = props;
 
 	const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 	const [modalVisible, setModalVisible] = useState<ModalVisibility>(
@@ -41,74 +28,17 @@ function MainLayout(props) {
 	}, []);
 
 	return (
-		<article id="app-main-layout" className="flex">
-			<MainLayoutContext.Provider value={{ setModalVisible }}>
+		<article id="app-main-layout" className={classes.root}>
+			<MainLayoutContext.Provider
+				value={{ classes, drawerOpen, setDrawerOpen, setModalVisible }}
+			>
 				<CssBaseline />
 
-				{/* Nav Bar */}
-				<AppBar
-					position="absolute"
-					className={classNames(
-						classes.appBar,
-						drawerOpen && classes.appBarShift
-					)}
-				>
-					<Toolbar disableGutters={!drawerOpen} className={classes.toolbar}>
-						<IconButton
-							color="inherit"
-							aria-label="Open drawer"
-							onClick={() => setDrawerOpen(true)}
-							className={classNames(
-								classes.menuButton,
-								drawerOpen && classes.menuButtonHidden
-							)}
-						>
-							<MenuIcon />
-						</IconButton>
-						<Typography
-							component="h1"
-							variant="h6"
-							color="inherit"
-							noWrap
-							className={classes.title}
-						>
-							MainLayout
-						</Typography>
-						<IconButton color="inherit">
-							<Badge badgeContent={4} color="secondary">
-								<NotificationsIcon />
-							</Badge>
-						</IconButton>
-					</Toolbar>
-				</AppBar>
+				<NavBar />
 
-				{/* Menu */}
-				<Drawer
-					variant="permanent"
-					classes={{
-						paper: classNames(
-							classes.drawerPaper,
-							!drawerOpen && classes.drawerPaperClose
-						),
-					}}
-					open={drawerOpen}
-				>
-					<div className={classes.toolbarIcon}>
-						<IconButton onClick={() => setDrawerOpen(false)}>
-							<ChevronLeftIcon />
-						</IconButton>
-					</div>
-					<Divider />
-					{/* <List>{mainListItems}</List> */}
-					<Divider />
-					{/* <List>{secondaryListItems}</List> */}
-				</Drawer>
+				<Menu />
 
-				{/* Main Content */}
-				<main className={classes.content}>
-					<div className={classes.appBarSpacer} />
-					<MainContent />
-				</main>
+				<MainContent />
 			</MainLayoutContext.Provider>
 		</article>
 	);

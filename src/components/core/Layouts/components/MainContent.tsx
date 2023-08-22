@@ -7,11 +7,16 @@ import { getKeyName } from "src/services/utils/handlers/routes";
 import Panes from "./Panes";
 
 export default function MainContent() {
-	const { setModalVisible } = useContext(MainLayoutContext);
+	const { setModalVisible, classes } = useContext(MainLayoutContext);
 
 	const { panesItem, tabActiveKey } = useMainContent();
 
-	return <Panes panesItem={panesItem} tabActiveKey={tabActiveKey} />;
+	return (
+		<main className={classes.content}>
+			<div className={classes.appBarSpacer} />
+			<Panes panesItem={panesItem} tabActiveKey={tabActiveKey} />
+		</main>
+	);
 }
 
 const noNewTab = ["/signin", "/signup"];
