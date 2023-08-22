@@ -1,10 +1,10 @@
 import React from "react";
 import loadable from "@loadable/component";
 import { RouteTypes } from "src/common/models";
-import { CircularProgress } from "@mui/material";
+import Loading from "src/components/core/Stateless/Loading";
 
 const Auths = loadable(() => import("../../views/Auths"), {
-	fallback: <CircularProgress />,
+	fallback: <Loading />,
 });
 
 export const Auth = {

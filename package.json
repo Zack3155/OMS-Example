@@ -36,6 +36,7 @@
 		"http-proxy-middleware": "^2.0.4",
 		"i18next": "^22.4.13",
 		"i18next-browser-languagedetector": "^7.0.1",
+		"prettier-plugin-tailwindcss": "^0.5.3",
 		"query-string": "^8.0.3",
 		"react": "^18.2.0",
 		"react-barcode": "^1.4.6",
@@ -104,7 +105,7 @@
 		"eslint": "^8.36.0",
 		"eslint-config-prettify-base": "^0.1.8",
 		"html-webpack-plugin": "^5.5.0",
-		"prettier": "^2.8.6",
+		"prettier": "^3.0.2",
 		"react-router-dom": "^6.9.0",
 		"style-loader": "^3.3.3",
 		"tsconfig-paths-webpack-plugin": "^4.0.0"

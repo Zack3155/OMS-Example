@@ -1,18 +1,18 @@
 import React from "react";
 import { RouteProps, RouteTypes } from "src/common/models";
-import { CircularProgress } from "@mui/material";
+import Loading from "src/components/core/Stateless/Loading";
 import loadable from "@loadable/component";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 
 // 一级菜单Membership组件
 const Main = loadable(() => import("src/views/Membership/"), {
-	fallback: <CircularProgress />,
+	fallback: <Loading />,
 });
 // const History = loadable(() => import("src/views/Membership/History"), {
-// 	fallback: <CircularProgress />,
+// 	fallback: <Loading />,
 // });
 // const Item = loadable(() => import("src/views/Membership/MembershipItem"), {
-// 	fallback: <CircularProgress />,
+// 	fallback: <Loading />,
 // });
 
 const Membership: RouteProps = {
