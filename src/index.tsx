@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./services/store";
 import App from "./App";
+// Tailwind Css
+import "./styles/index.css";
 
 const rootContainer = document.getElementById("root");
 const root = createRoot(rootContainer!);

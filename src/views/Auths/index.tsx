@@ -5,11 +5,20 @@ import * as API_Auth from "src/apis/auth";
 import { ACCESS_TOKEN, IS_LOGIN, REFRESH_TOKEN } from "src/common/constants";
 import { useAppDispatch } from "src/services/utils/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
+import { Button, FormControl, FormLabel, TextField } from "@mui/material";
+import { useForm } from "react-hook-form";
 
 export default function Auths() {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation("translation", { keyPrefix: "auth" });
+
+	const {
+		register,
+		handleSubmit,
+		watch,
+		formState: { errors },
+	} = useForm();
 
 	async function login() {
 		// const { username, password } = form.getFieldsValue(true);
@@ -25,22 +34,55 @@ export default function Auths() {
 		// });
 	}
 
+	const onSubmit = (data) => {
+		console.log(JSON.stringify(data, null, 2));
+	};
+
 	return (
 		<article
 			id="login-container"
-			className="relative h-screen bg-[url('../../assets/site/layout-background.svg')]"
+			className="relative h-screen bg-[url('../assets/site/layout-background.svg')]"
 		>
-			<section className="max-w-[275px] pt-[15vh] relative m-auto flex flex-col items-center">
-				<div className="logo">
+			<section className="max-w-xs pt-[15vh] relative m-auto flex flex-col items-center">
+				<div>
 					<img src={logo} />
-					<div className="site-intro">{t("siteTitle")}</div>
+					<div className="text-center">{t("siteTitle")}</div>
 				</div>
 
-				<aside className="mt-[1rem] flex items-center justify-between">
-					<div className="w-full" onClick={login}>
-						{t("login")}
-					</div>
-				</aside>
+				<div>
+					<FormControl>
+						<TextField
+							required
+							id="username"
+							name="username"
+							label="User Name"
+							fullWidth
+							margin="dense"
+							{...register("username")}
+							error={errors.username ? true : false}
+						/>
+
+						<TextField
+							required
+							id="password"
+							name="password"
+							label="Password"
+							type="password"
+							fullWidth
+							margin="dense"
+							{...register("password")}
+							error={errors.password ? true : false}
+						/>
+
+						<Button
+							variant="contained"
+							color="primary"
+							onClick={handleSubmit(onSubmit)}
+						>
+							Login
+						</Button>
+					</FormControl>
+				</div>
 			</section>
 		</article>
 	);
