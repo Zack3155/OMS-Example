@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Alert, Button, FormControl, Snackbar, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { AlertTypes } from "./model";
+import Message from "src/components/core/Stateless/Message";
 
 export default function Auths() {
 	const navigate = useNavigate();
@@ -77,8 +78,8 @@ export default function Auths() {
 							required
 							id="password"
 							name="password"
-							label="Password"
 							type="password"
+							label="Password"
 							fullWidth
 							margin="dense"
 							{...register("password")}
@@ -96,25 +97,19 @@ export default function Auths() {
 				</div>
 
 				<aside>
-					<Snackbar
+					<Message
+						mode="error"
+						onClose={onCloseAlert}
 						open={alertOpen === AlertTypes.FAIL}
-						autoHideDuration={6000}
-						onClose={onCloseAlert}
-					>
-						<Alert severity="error" sx={{ width: "100%" }}>
-							Login Failed! Please try again.
-						</Alert>
-					</Snackbar>
+						content="Login Failed! Please try again."
+					/>
 
-					<Snackbar
-						open={alertOpen === AlertTypes.REDIRECT}
-						autoHideDuration={6000}
+					<Message
+						mode="warning"
 						onClose={onCloseAlert}
-					>
-						<Alert severity="warning" sx={{ width: "100%" }}>
-							Already logged in, Redirecting...
-						</Alert>
-					</Snackbar>
+						open={alertOpen === AlertTypes.REDIRECT}
+						content="Already logged in, Redirecting..."
+					/>
 				</aside>
 			</section>
 		</article>
