@@ -1,19 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import logo from "src/assets/site/logo.svg";
 import * as API_Auth from "src/apis/auth";
 import { ACCESS_TOKEN, IS_LOGIN, REFRESH_TOKEN } from "src/common/constants";
 import { useAppDispatch } from "src/services/utils/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
-import {
-	Alert,
-	Button,
-	FormControl,
-	FormLabel,
-	Snackbar,
-	TextField,
-} from "@mui/material";
+import { Alert, Button, FormControl, Snackbar, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { AlertTypes } from "./model";
 
 export default function Auths() {
 	const navigate = useNavigate();
@@ -27,11 +21,13 @@ export default function Auths() {
 		formState: { errors },
 	} = useForm();
 
-	const [alertOpen, setAlertOpen] = useState(false);
+	const [alertOpen, setAlertOpen] = useState<AlertTypes>(AlertTypes.DISABLE);
+
+	const onCloseAlert = () => setAlertOpen(AlertTypes.DISABLE);
 
 	async function login(data) {
 		const res = await API_Auth.SignIn(data).catch(() => null);
-		if (!res?.data) return setAlertOpen(true);
+		if (!res?.data) return setAlertOpen(AlertTypes.FAIL);
 
 		const result = res.data;
 		const { access_token, refresh_token, username } = result;
@@ -42,6 +38,16 @@ export default function Auths() {
 		navigate("/", { replace: true });
 		window.location.reload();
 	}
+
+	useEffect(() => {
+		if (localStorage.getItem(IS_LOGIN) == "true") {
+			setAlertOpen(AlertTypes.REDIRECT);
+			setTimeout(() => {
+				navigate("/", { replace: true });
+				window.location.reload();
+			}, 1500);
+		}
+	}, []);
 
 	return (
 		<article
@@ -91,16 +97,22 @@ export default function Auths() {
 
 				<aside>
 					<Snackbar
-						open={alertOpen}
+						open={alertOpen === AlertTypes.FAIL}
 						autoHideDuration={6000}
-						onClose={() => setAlertOpen(false)}
+						onClose={onCloseAlert}
 					>
-						<Alert
-							onClose={() => setAlertOpen(false)}
-							severity="error"
-							sx={{ width: "100%" }}
-						>
+						<Alert severity="error" sx={{ width: "100%" }}>
 							Login Failed! Please try again.
+						</Alert>
+					</Snackbar>
+
+					<Snackbar
+						open={alertOpen === AlertTypes.REDIRECT}
+						autoHideDuration={6000}
+						onClose={onCloseAlert}
+					>
+						<Alert severity="warning" sx={{ width: "100%" }}>
+							Already logged in, Redirecting...
 						</Alert>
 					</Snackbar>
 				</aside>
