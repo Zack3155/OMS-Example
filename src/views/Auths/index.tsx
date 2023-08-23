@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import logo from "src/assets/site/logo.svg";
 import * as API_Auth from "src/apis/auth";
 import { ACCESS_TOKEN, IS_LOGIN, REFRESH_TOKEN } from "src/common/constants";
 import { useAppDispatch } from "src/services/utils/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
-import { Button, FormControl, FormLabel, TextField } from "@mui/material";
+import {
+	Alert,
+	Button,
+	FormControl,
+	FormLabel,
+	Snackbar,
+	TextField,
+} from "@mui/material";
 import { useForm } from "react-hook-form";
 
 export default function Auths() {
@@ -20,23 +27,21 @@ export default function Auths() {
 		formState: { errors },
 	} = useForm();
 
-	async function login() {
-		// const { username, password } = form.getFieldsValue(true);
-		// await API_Auth.SignIn({ username, password }).then((res) => {
-		// 	const data = res.data;
-		// 	const { access_token, refresh_token, username } = data;
-		// 	localStorage.setItem(ACCESS_TOKEN, access_token);
-		// 	localStorage.setItem(REFRESH_TOKEN, refresh_token);
-		// 	localStorage.setItem(IS_LOGIN, "true");
-		// 	// dispatch(userActions.setUsername(username));
-		// 	navigate("/", { replace: true });
-		// 	window.location.reload();
-		// });
-	}
+	const [alertOpen, setAlertOpen] = useState(false);
 
-	const onSubmit = (data) => {
-		console.log(JSON.stringify(data, null, 2));
-	};
+	async function login(data) {
+		const res = await API_Auth.SignIn(data).catch(() => null);
+		if (!res?.data) return setAlertOpen(true);
+
+		const result = res.data;
+		const { access_token, refresh_token, username } = result;
+		localStorage.setItem(ACCESS_TOKEN, access_token);
+		localStorage.setItem(REFRESH_TOKEN, refresh_token);
+		localStorage.setItem(IS_LOGIN, "true");
+		// dispatch(userActions.setUsername(username));
+		navigate("/", { replace: true });
+		window.location.reload();
+	}
 
 	return (
 		<article
@@ -77,12 +82,28 @@ export default function Auths() {
 						<Button
 							variant="contained"
 							color="primary"
-							onClick={handleSubmit(onSubmit)}
+							onClick={handleSubmit(login)}
 						>
 							Login
 						</Button>
 					</FormControl>
 				</div>
+
+				<aside>
+					<Snackbar
+						open={alertOpen}
+						autoHideDuration={6000}
+						onClose={() => setAlertOpen(false)}
+					>
+						<Alert
+							onClose={() => setAlertOpen(false)}
+							severity="error"
+							sx={{ width: "100%" }}
+						>
+							Login Failed! Please try again.
+						</Alert>
+					</Snackbar>
+				</aside>
 			</section>
 		</article>
 	);

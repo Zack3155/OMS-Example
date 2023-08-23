@@ -1,5 +1,5 @@
 {
-	"auth_page": {
+	"auth": {
 		"siteTitle": "电子兑换券一站式管理平台",
 		"remember": "记住密码",
 		"forgetPwd": "忘记密码?",
