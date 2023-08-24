@@ -40,6 +40,7 @@ function useMainContent() {
 		// 未登录
 		if (!localStorage.getItem(IS_LOGIN) && !pathname.includes("/auths")) {
 			onClearLoginCache();
+			navigate("auths/login");
 			// setModalVisible(ModalVisibility.Login);
 		}
 

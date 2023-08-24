@@ -27,14 +27,13 @@ export default function Auths() {
 	const onCloseAlert = () => setAlertOpen(AlertTypes.DISABLE);
 
 	async function login(data) {
-		const res = await API_Auth.SignIn(data).catch(() => null);
+		const res = await API_Auth.SIGN_IN(data).catch(() => null);
 		if (!res?.data) return setAlertOpen(AlertTypes.FAIL);
 
-		const result = res.data;
-		const { access_token, refresh_token, username } = result;
+		const { access_token, refresh_token, username } = res.data;
+		localStorage.setItem(IS_LOGIN, "true");
 		localStorage.setItem(ACCESS_TOKEN, access_token);
 		localStorage.setItem(REFRESH_TOKEN, refresh_token);
-		localStorage.setItem(IS_LOGIN, "true");
 		// dispatch(userActions.setUsername(username));
 		navigate("/", { replace: true });
 		window.location.reload();

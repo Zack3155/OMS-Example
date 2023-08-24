@@ -1,8 +1,19 @@
 import React from "react";
-import { CircularProgress } from "@mui/material";
+import { Backdrop, CircularProgress } from "@mui/material";
 
-export default function Loading() {
+interface LoadingProps {
+	loading?: boolean;
+}
+
+export default function Loading(props: LoadingProps) {
+	const { loading } = props;
+
 	return (
-		<CircularProgress className="flex justify-center items-center w-full h-full" />
+		<Backdrop
+			open={loading ?? true}
+			sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+		>
+			<CircularProgress color="inherit" />
+		</Backdrop>
 	);
 }

@@ -7,7 +7,7 @@ import {
 } from "src/services/utils/hooks/useSelector";
 import { IS_LOGIN } from "src/common/constants";
 import { routeActions } from "src/services/store/Route";
-import { Backdrop } from "@mui/material";
+import Loading from "../Stateless/Loading";
 
 export default function Routes() {
 	const navigate = useNavigate();
@@ -37,10 +37,7 @@ export default function Routes() {
 	return (
 		<>
 			{filteredRoutes}
-			<Backdrop
-				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-				open={loading}
-			/>
+			<Loading loading={loading} />
 		</>
 	);
 }
