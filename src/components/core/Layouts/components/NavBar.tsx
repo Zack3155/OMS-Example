@@ -9,8 +9,6 @@ import {
 	Typography,
 } from "@mui/material";
 import MenuIcon from "@material-ui/icons/Menu";
-import { Badge } from "@mui/base";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";

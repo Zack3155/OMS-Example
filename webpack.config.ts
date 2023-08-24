@@ -22,7 +22,7 @@ const config: webpack.Configuration = {
 			// .css文件预处理器
 			{
 				test: /\.(scss|css)$/,
-				use: [MiniCssExtractPlugin.loader, "css-loader"],
+				use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
 			},
 			//处理图片
 			{
@@ -71,8 +71,6 @@ const config: webpack.Configuration = {
 			filename: "index.html", // 生成的新的html的文件名,
 			favicon: "./public/favicon.ico",
 		}),
-		require("tailwindcss"),
-		require("autoprefixer")
 	],
 };
 
