@@ -17,9 +17,12 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "src/services/utils/hooks/useSelector";
 import { routeActions } from "src/services/store/Route";
 import { onClearLoginCache } from "src/services/utils/handlers/logout";
+import TranslateIcon from "@mui/icons-material/Translate";
+import { langActions } from "src/services/store/Lang";
 
 export default function NavBar() {
 	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 	const { drawerOpen, setDrawerOpen, classes } = useContext(MainLayoutContext);
 
 	const { onClickSetting, onCloseSetting, open, anchorEl, onLogout } =
@@ -53,12 +56,6 @@ export default function NavBar() {
 					MainLayout
 				</Typography>
 
-				<IconButton color="inherit">
-					<Badge badgeContent={4} color="secondary">
-						<NotificationsIcon />
-					</Badge>
-				</IconButton>
-
 				<div className="inline-flex items-center justify-center">
 					<IconButton color="inherit" onClick={onClickSetting}>
 						<PersonOutlinedIcon />
@@ -77,6 +74,13 @@ export default function NavBar() {
 						<MenuItem onClick={onLogout}>Logout</MenuItem>
 					</Menu>
 				</div>
+
+				<IconButton
+					color="inherit"
+					onClick={() => dispatch(langActions.changeLang())}
+				>
+					<TranslateIcon />
+				</IconButton>
 			</Toolbar>
 		</AppBar>
 	);

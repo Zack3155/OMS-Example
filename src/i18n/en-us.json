@@ -57,7 +57,7 @@
 	},
 	"sidemenu": {
 		"dashboard_menu_title": "Dashboard",
-		"eCard_menu_title": "E-Services",
+		"eServices_menu_title": "E-Services",
 		"voucher_menu_title": "Voucher",
 		"coupon_menu_title": "Coupon",
 		"ecardConfigure": "Configure a Voucher",
@@ -86,7 +86,9 @@
 		"membershipDesignTitle": "Design a Loyalty Program Card",
 		"membershipConfigureTitle": "Create Loyalty Program",
 		"memberCenterTitle": "Manage Members",
-		"store_menu_title": "Lite Store Website"
+		"store_menu_title": "Lite Store Website",
+		"report_menu_title":"Reports",
+		"setting_menu_title": "Settings"
 	},
 	"forget_password": {
 		"verify-email-title": "Verify Account Email",
